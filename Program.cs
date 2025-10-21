@@ -12,6 +12,20 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
         npgsql.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
     }));
 
+var corsPolicy = "_allowFrontend";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: corsPolicy, policy =>
+    {
+        policy.WithOrigins(
+            "http://localhost:5173",                   
+            "https://performance-review-panel-frontend-o.vercel.app"           
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
