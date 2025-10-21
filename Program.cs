@@ -18,8 +18,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: corsPolicy, policy =>
     {
         policy.WithOrigins(
-            "http://localhost:5173",                   
-            "https://performance-review-panel-frontend-o5rn-35glervzb.vercel.app"           
+            "https://localhost:5173",                   
+            "https://performance-review-panel-frontend-o.vercel.app"           
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
